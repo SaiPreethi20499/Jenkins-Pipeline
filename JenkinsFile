@@ -16,7 +16,8 @@ pipeline{
                 success{
                     mail to: "preethisai597@gmail.com",
                     subject: "Testing Status Email",
-                    body: "Testing was successful"
+                    body: "Testing was successful", 
+                    attachmentsPattern: 'logs/*.txt'
                 }
                 failure{
                     mail to: "preethisai597@gmail.com",
