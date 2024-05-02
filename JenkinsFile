@@ -4,28 +4,67 @@ pipeline{
         stage('Build'){
             steps{
                 echo "Building...."
+                echo "We complie and Build the code using 'Gradle' tool."
+            }
+        }
+        stage('Unit and Integration Tests '){
+            steps{
+                echo "Testing...."
+                echo "We use 'Mockito' tool for Unit testing and 'Cucumber' tool for Integration testing."
             }
             post {
                 success{
                     mail to: "preethisai597@gmail.com",
-                    subject: "Build Status Email",
-                    body: "Build was successful"
+                    subject: "Testing Status Email",
+                    body: "Testing was successful"
+                }
+                failure{
+                    mail to: "preethisai597@gmail.com",
+                    subject: "Testing Status Email",
+                    body: "Testing was Failed"
                 }
             }
         }
-        stage('Test'){
+        stage('Code Analysis'){
             steps{
-                echo "Testing...."
+                echo "Code Analysis...."
+                echo "The tool used for analyzing code using Jenkins is 'SonarQube'."
             }
         }
-        stage('Deploy'){
+        stage('Security Scan'){
             steps{
-                echo "Deploying...."
+                echo "Security Scan...."
+                echo "The 'OWASP Dependency-Check' is used for security scanning in Jenkins."
+            }
+            post {
+                success{
+                    mail to: "preethisai597@gmail.com",
+                    subject: "Scanning Status Email",
+                    body: "Scanning was successful"
+                }
+                failure{
+                    mail to: "preethisai597@gmail.com",
+                    subject: "Scanning Status Email",
+                    body: "Scanning was Failed"
+                }
             }
         }
-         stage('Complete'){
+        stage('Deploy to Staging'){
             steps{
-                echo "Complete...."
+                echo "Deploy to Staging...."
+                echo "We deploy the application to server using 'AWS CodeDeploy'."
+            }
+        }
+        stage('Integration Tests on Staging'){
+            steps{
+                echo "Integration Tests on Staging...."
+                echo "We use the above Mockito and Cucumber testing tools to ensure the application performs as expected. "
+            }
+        }
+        stage('Deploy to Production'){
+            steps{
+                echo "Deploy to Production...."
+                echo "Deploy the application to Production server."
             }
         }
     }
