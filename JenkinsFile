@@ -38,7 +38,7 @@ pipeline{
             steps{
                 echo "Security Scan...."
                 echo "The 'OWASP Dependency-Check' is used for security scanning in Jenkins."
-                sh 'echo "Any logs in Scanning phase will be displayed here."" > security.log'
+                sh 'echo "Any logs in Scanning phase will be displayed here." > security.log'
             }
             post {
                 success{
