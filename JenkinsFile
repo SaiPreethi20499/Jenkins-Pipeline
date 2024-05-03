@@ -14,15 +14,16 @@ pipeline{
             }
             post {
                 success{
-                    mail to: "preethisai597@gmail.com",
+                    emailext to: "preethisai597@gmail.com",
                     subject: "Testing Status Email",
-                    body: "Testing was successful", 
-                    attachmentsPattern: 'logs/*.txt'
+                    body: "Testing was successful",
+                    attachmentsPattern: 'test.log'
                 }
                 failure{
-                    mail to: "preethisai597@gmail.com",
+                    emailext to: "preethisai597@gmail.com",
                     subject: "Testing Status Email",
-                    body: "Testing was Failed"
+                    body: "Testing was Failed",
+                    attachmentsPattern: 'test.log'
                 }
             }
         }
@@ -39,14 +40,16 @@ pipeline{
             }
             post {
                 success{
-                    mail to: "preethisai597@gmail.com",
+                    emailext to: "preethisai597@gmail.com",
                     subject: "Scanning Status Email",
-                    body: "Scanning was successful"
+                    body: "Scanning was successful",
+                    attachmentsPattern: 'security.log'
                 }
                 failure{
-                    mail to: "preethisai597@gmail.com",
+                    emailext to: "preethisai597@gmail.com",
                     subject: "Scanning Status Email",
-                    body: "Scanning was Failed"
+                    body: "Scanning was Failed",
+                    attachmentsPattern: 'security.log'
                 }
             }
         }
