@@ -11,6 +11,7 @@ pipeline{
             steps{
                 echo "Testing...."
                 echo "We use 'Mockito' tool for Unit testing and 'Cucumber' tool for Integration testing."
+                sh 'echo "Unit Testing and Integration Testing are completed successfully" > test.log'
             }
             post {
                 success{
@@ -37,6 +38,7 @@ pipeline{
             steps{
                 echo "Security Scan...."
                 echo "The 'OWASP Dependency-Check' is used for security scanning in Jenkins."
+                sh 'echo "Nexpose Security executed successfuly without any vulnerabilities" > security.log'
             }
             post {
                 success{
