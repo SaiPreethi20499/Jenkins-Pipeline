@@ -71,6 +71,7 @@ pipeline{
             steps{
                 echo "Deploy to Production...."
                 echo "Deploy the application to Production server."
+                echo "The application is all ready to use."
             }
         }
     }
